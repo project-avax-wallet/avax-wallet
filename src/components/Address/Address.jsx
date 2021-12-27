@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { getEllipsisTxt } from "../../helpers/formatters";
 import Blockie from "../Blockie";
-import "./identicon.css";
+import "./identicon.module.css";
 import { useMoralis } from "react-moralis";
 import { Skeleton } from "antd";
 
@@ -18,13 +18,13 @@ const styles = {
 };
 
 function Address(props) {
-  const { account, isAuthenticated } = useMoralis();
+  const { account } = useMoralis();
   const [address, setAddress] = useState();
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
-    setAddress(props?.address || (isAuthenticated && account));
-  }, [account, isAuthenticated, props]);
+    setAddress(props?.address || account);
+  }, [account, props]);
 
   if (!address) return <Skeleton paragraph={{ rows: 1, width: "100%" }} title={false} active />;
 

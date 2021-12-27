@@ -88,7 +88,7 @@ export default function Contract() {
                   console.log("🔊 New Receipt: ", receipt);
                 })
                 .on("error", (error) => {
-                  console.error(error);
+                  console.log(error);
                 });
             } else {
               console.log("options", options);
@@ -112,7 +112,7 @@ export default function Contract() {
         }}
       >
         {data.map((event, key) => (
-          <Card title={"Transfer event"} size="small" style={{ marginBottom: "20px" }}>
+          <Card key={key} title={"Transfer event"} size="small" style={{ marginBottom: "20px" }}>
             {getEllipsisTxt(event.attributes.transaction_hash, 14)}
           </Card>
         ))}
