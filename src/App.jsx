@@ -6,14 +6,12 @@ import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
 import ERC20Balance from "components/ERC20Balance";
 import ERC20Transfers from "components/ERC20Transfers";
-import InchDex from "components/InchDex";
 import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
-import QuickStart from "components/QuickStart";
 import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
@@ -81,24 +79,8 @@ const App = ({ isServerInfo }) => {
 
         <div style={styles.content}>
           <Switch>
-            <Route exact path="/quickstart">
-              <QuickStart isServerInfo={isServerInfo} />
-            </Route>
             <Route path="/wallet">
               <Wallet />
-            </Route>
-            <Route path="/1inch">
-              <Tabs defaultActiveKey="1" style={{ alignItems: "center" }}>
-                <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
-                  <InchDex chain="eth" />
-                </Tabs.TabPane>
-                <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
-                  <InchDex chain="bsc" />
-                </Tabs.TabPane>
-                <Tabs.TabPane tab={<span>Polygon</span>} key="3">
-                  <InchDex chain="polygon" />
-                </Tabs.TabPane>
-              </Tabs>
             </Route>
             <Route path="/erc20balance">
               <ERC20Balance />
@@ -115,16 +97,11 @@ const App = ({ isServerInfo }) => {
             <Route path="/contract">
               <Contract />
             </Route>
-            <Route path="/">
-              <Redirect to="/quickstart" />
-            </Route>
-            <Route path="/ethereum-boilerplate">
-              <Redirect to="/quickstart" />
-            </Route>
             <Route path="/nonauthenticated">
               <>Please login using the "Authenticate" button</>
             </Route>
           </Switch>
+          <Redirect to="/wallet"/>
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>
@@ -140,17 +117,6 @@ const App = ({ isServerInfo }) => {
           🙋 You have questions? Ask them on the {""}
           <a target="_blank" rel="noopener noreferrer" href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29">
             Moralis forum
-          </a>
-        </Text>
-
-        <Text style={{ display: "block" }}>
-          📖 Read more about{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplat"
-          >
-            Moralis
           </a>
         </Text>
       </Footer>

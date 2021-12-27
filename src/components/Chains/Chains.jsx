@@ -22,65 +22,15 @@ const styles = {
 
 const menuItems = [
   {
-    key: "0x1",
-    value: "Ethereum",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x539",
-    value: "Local Chain",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x3",
-    value: "Ropsten Testnet",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x4",
-    value: "Rinkeby Testnet",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x2a",
-    value: "Kovan Testnet",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x5",
-    value: "Goerli Testnet",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x38",
-    value: "Binance",
-    icon: <BSCLogo />,
-  },
-  {
-    key: "0x61",
-    value: "Smart Chain Testnet",
-    icon: <BSCLogo />,
-  },
-  {
-    key: "0x89",
-    value: "Polygon",
-    icon: <PolygonLogo />,
-  },
-  {
-    key: "0x13881",
-    value: "Mumbai",
-    icon: <PolygonLogo />,
-  },
-  {
     key: "0xa86a",
     value: "Avalanche",
-    icon: <AvaxLogo />,
+    icon: <AvaxLogo />
   },
   {
     key: "0xa869",
     value: "Avalanche Testnet",
-    icon: <AvaxLogo />,
-  },
+    icon: <AvaxLogo />
+  }
 ];
 
 function Chains() {
@@ -91,7 +41,9 @@ function Chains() {
   console.log("chain", chain);
 
   useEffect(() => {
-    if (!chainId) return null;
+    if (!chainId) switchNetwork("0xa86a");
+    if (chainId != "0xa86a") switchNetwork("0xa86a");
+
     const newSelected = menuItems.find((item) => item.key === chainId);
     setSelected(newSelected);
     console.log("current chainId: ", chainId);
